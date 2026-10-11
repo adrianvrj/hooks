@@ -1,4 +1,8 @@
+[![The Hooks Daily: every meme buys sovereign debt](.github/readme-header.png)](https://hooks.up.railway.app)
+
 # Hooks
+
+[![Live on testnet](https://img.shields.io/badge/live-hooks.up.railway.app-c9261b.svg)](https://hooks.up.railway.app) [![CI](https://github.com/adrianvrj/garfio/actions/workflows/ci.yml/badge.svg)](https://github.com/adrianvrj/garfio/actions/workflows/ci.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 **Memecoins backed by sovereign bonds, on Stellar.** Every memecoin launched on Hooks keeps its bonding-curve reserve in an Etherfuse stablebond (Mexico's CETES, Brazil's Tesouro) instead of XLM. Every meme launched buys sovereign debt, the reserve earns the bond's yield even when nobody trades, and a quarter of every fee goes to the meme's vault: half of it is paid to the meme's holders as dividends in the bond, and the rest buys the meme back and burns it once it trades on Soroswap.
 
@@ -113,6 +117,8 @@ stellar contract build     # cargo test needs target/wasm32v1-none/release/meme_
 cargo test
 ```
 
+38 tests (28 on the launchpad, 10 on the token) run on every push, with the app's type check and lint ([CI](.github/workflows/ci.yml)).
+
 ## Testnet
 
 The pairs are Etherfuse's sandbox stablebonds, real tokens on Stellar testnet, bought with simulated pesos through Etherfuse's sandbox onramp: 500 MXN per order. We stock a treasury account with many orders, and the app's faucet hands out about $65 of each bond.
@@ -165,3 +171,7 @@ NET=mainnet ADMIN=<multisig identity> START_USD=300 ./scripts/deploy.sh
 ```
 
 On mainnet the app shows a fixed "unaudited" banner, hides the faucet and links to Etherfuse and Aquarius to get bonds. Soroswap's mainnet pair runs different code from testnet's (`soroswap/core/public/mainnet.contracts.json`); fetch it into `testdata/` and run the migration tests against it before deploying.
+
+## License
+
+[MIT](LICENSE). The contracts are unaudited.
